@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Order;
 
 class Customer extends Model
 {
@@ -13,4 +14,8 @@ class Customer extends Model
      */
     protected $table = 'customers';
     protected $fillable = ['name', 'email', 'address'];
+
+    public function order(){
+    	return $this->belongsTo('Order');
+    }
 }

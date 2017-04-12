@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Order;
 
 class OrderController extends Controller
 {
@@ -23,7 +24,8 @@ class OrderController extends Controller
      */
     public function index()
     {
-        return view('order.index');
+        $orders = Order::with('customer')->get();
+        return view('order.index')->with("orders", $orders);
     }
 
     /**

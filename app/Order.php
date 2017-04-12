@@ -12,4 +12,12 @@ class Order extends Model
      * @var string
      */
     protected $table = 'orders';
+
+    // public function menu(){
+    //   return $this->hasMany('App\OrderMenu','id','id');
+    // }
+
+    public function customer(){
+    	return $this->hasOne('App\Customer','id','customer_id');
+    }
 }
