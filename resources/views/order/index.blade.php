@@ -17,7 +17,6 @@
                     <div class="tab-content">
                         <div id="all_orders" class="tab-pane fade in active">
                             <h3>All Orders</h3>
-                            <p>Some content.</p>
                             <div class="table-responsive">
                                 <table class="table table-hover">
                                     <thead>
@@ -45,11 +44,48 @@
                         </div>
                         <div id="ongoing" class="tab-pane fade">
                             <h3>Ongoing Orders</h3>
-                            <p>Some content in menu 1.</p>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Customer</th>
+                                            <th>Waktu Order</th>
+                                            <th>Harga</th>
+                                            <th>Keterangan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($orders as $number => $order)
+                                        <tr>
+                                            <td>{{$number+1}}</td>
+                                            <td>{{$order->customer->name}}</td>
+                                            <td>{{$order->created_at}}</td>
+                                            <td>{{$order->total_discount}}</td>
+                                            <td>Ongoing</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+
                         </div>
                         <div id="completed" class="tab-pane fade">
                             <h3>Completed Orders</h3>
-                            <p>Some content in menu 2.</p>
+                            <div class="table-responsive">
+                                <table class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>No</th>
+                                            <th>Customer</th>
+                                            <th>Waktu Order</th>
+                                            <th>Harga</th>
+                                            <th>Keterangan</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
