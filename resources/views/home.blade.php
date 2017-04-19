@@ -19,80 +19,46 @@
                     <div class="row">
                         <label class="col-md-4 control-label" name="activity"><h3>Latest Activities</h3></label>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="row col-md-offset-1">
-                                <div class="col-md-5">
-                                    <b>Menu</b>
-                                </div>
-                                <div class="col-md-2"> 
-                                    <b>Quantity</b>
-                                </div>
-                                <div class="col-md-3"> 
-                                    <b>Time</b>
-                                </div>
-                            </div>  
-                            <div class="row col-md-offset-1">
-                                <div class="col-md-5">
-                                    Iced Tea
-                                </div>
-                                <div class="col-md-2"> 
-                                    5
-                                </div>
-                                <div class="col-md-4"> 
-                                    2017-04-07 03:31
-                                </div>
-                            </div>
-                            <div class="row col-md-offset-1">
-                                <div class="col-md-5">
-                                    Cappucino
-                                </div>
-                                <div class="col-md-2"> 
-                                    2
-                                </div>
-                                <div class="col-md-4"> 
-                                    2017-04-07 02:20                                    
-                                </div>
-                            </div>
-                            <div class="row col-md-offset-1">
-                                <div class="col-md-5">
-                                    Espresso
-                                </div>
-                                <div class="col-md-2"> 
-                                    1
-                                </div>
-                                <div class="col-md-4"> 
-                                    2017-04-07 01:45                                    
-                                </div>
-                            </div>
-                        </div>
+                    <div class="col-md-12 data_table">
+                        <table class="table table-condensed">
+                            <tr>
+                                <th>Menu</th>
+                                <th>Quantity</th>
+                                <th>Time</th>
+                                <th>Status</th>
+                            </tr>
+                            @foreach ($orders_menu as $order_menu)
+                            <tr class="customers-card">
+                                <td> {{$order_menu->menu->name}}</td>
+                                <td> {{$order_menu->quantity}}</td>
+                                <td> {{$order_menu->created_at}}</td>
+                                <td> @if ($order_menu->status === 1)
+                                        Finished
+                                     @else
+                                        Ongoing
+                                     @endif
+                                </td>
+                            </tr>
+                            @endforeach
+                        </table>
                     </div>
                      <div class="row">
                         <label class="col-md-4 control-label" name="inventory"><h3>Inventories</h3></label>
                     </div>
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="row col-md-offset-1">
-                                <div class="col-md-5">
-                                    <b>Menu</b>
-                                </div>
-                                <div class="col-md-2"> 
-                                    <b>Stock</b>
-                                </div>
-                            </div>  
+                    <div class="col-md-12 data_table">
+                        <table class="table table-condensed">
+                            <tr>
+                                <th>Menu</th>
+                                <th>Stock</th>
+                            </tr>
                             @foreach ($inventories as $inventory)
-                            <div class="row col-md-offset-1">
-                                <div class="col-md-5">
-                                    {{$inventory->name}}
-                                </div>
-                                <div class="col-md-2"> 
-                                    <font color="red"> {{$inventory->stock}}  </font>
-                                </div>
-                            </div>
+                            <tr class="customers-card">
+                                <td> {{$inventory->name}}</td>
+                                <td> <font color="red"> {{$inventory->stock}}  </font></td> 
+                            </tr>
                             @endforeach
-                        </div>
+                        </table>
                     </div>
-                </div>
             </div>
         </div>
     </div>

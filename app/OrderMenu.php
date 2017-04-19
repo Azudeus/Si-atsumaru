@@ -16,4 +16,8 @@ class OrderMenu extends Model
     public function order(){
     	return $this->hasOne('App\Order','id','order_id');
     }
+
+    public function menu(){
+    	return $this->hasOne('App\Menu','id','menu_id');
+    }
 }

@@ -24,6 +24,7 @@
                                         <tr>
                                             <th>No</th>
                                             <th>Customer</th>
+                                            <th>Menu</th>
                                             <th>Waktu Order</th>
                                             <th>Kuantitas</th>
                                             <th>Description</th>
@@ -35,6 +36,7 @@
                                         <tr id="{{$order_menu->id}}">
                                             <td>{{$number+1}}</td>
                                             <td>{{$order_menu->order->customer->name}}</td>
+                                            <td>{{$order_menu->menu->name}}</td>
                                             <td>{{$order_menu->created_at}}</td>
                                             <td>{{$order_menu->quantity}}</td>
                                             <td>{{$order_menu->description}}</td>

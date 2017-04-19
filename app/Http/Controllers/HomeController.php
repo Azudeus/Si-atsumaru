@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Inventory;
 use App\Constant;
+use App\OrderMenu;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,12 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $orders_menu = OrderMenu::with('menu')->orderby('created_at','desc')->limit(5)->get();
         $inventories = Inventory::where('stock','<=', Constant::InventoryDanger)->get();
-        return view('home')->with("inventories", $inventories);
+        $data = array(
+            'inventories'  => $inventories,
+            'orders_menu'   => $orders_menu
+        );
+        return view('home')->with($data);
     }
 }

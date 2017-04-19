@@ -30,7 +30,7 @@ class OrderController extends Controller
         $orders = Order::with('customer')->get();
         $orders_ongoing = Order::with('customer')->where('status', 0)->get();
         $orders_completed = Order::with('customer')->where('status', 1)->get();
-        $orders_menu = OrderMenu::with('order')->where('status', 0)->get();
+        $orders_menu = OrderMenu::with('order','menu')->where('status', 0)->get();
         $data = array(
             'orders'  => $orders,
             'orders_menu'   => $orders_menu,
