@@ -35,12 +35,17 @@ Route::post('inventory/edit','InventoryController@editInventory');
 // Activities (Orders)
 Route::get('/order', 'OrderController@index')->name('order');
 Route::get('/order/{id}', 'OrderController@detail')->where('id', '[0-9]+');
+Route::post('/order/finishedChecklist', 'OrderController@FinishedChecklist');
+Route::post('/order/checkOut', 'OrderController@CheckOut');
+
+
 
 // Menus
 Route::get('/menu', 'MenuController@index')->name('menu');
 Route::get('/menu/{id}', 'MenuController@detail')->where('id', '[0-9]+');
 Route::post('menu/add','MenuController@addMenu');
 Route::post('menu/edit','MenuController@editMenu');
+Route::post('menu/delete','MenuController@deleteMenu');
 
 // Promotions
 Route::get('/promotion', 'PromotionController@index')->name('promotion');

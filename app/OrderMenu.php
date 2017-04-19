@@ -12,4 +12,8 @@ class OrderMenu extends Model
      * @var string
      */
     protected $table = 'orders_menus';
+
+    public function order(){
+    	return $this->hasOne('App\Order','id','order_id');
+    }
 }

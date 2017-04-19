@@ -71,6 +71,7 @@ class POSController extends Controller
                         $order_menu->menu_id = $data[0];
                         $order_menu->quantity = $data[1];
                         $order_menu->description = $data[3];
+                        $order_menu->status = 0; //haven't been made
 
                         $data_promotion = explode(',', $data[2]);
                         print(count($data_promotion));

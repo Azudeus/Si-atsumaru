@@ -50,7 +50,6 @@ class MenuController extends Controller
                 ->withInput()
                 ->withErrors($validator);
         }
-        Log::info('YAYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYYu');
         
 
         $tmpName  = $request->file('image')->getPathName();
@@ -85,6 +84,14 @@ class MenuController extends Controller
         ];
 
         $menu->update($updates);
+
+        return redirect()->action("MenuController@index");
+    }
+
+    public function deleteMenu(Request $request){
+        $menu_inventory = MenuInventories::all()->where('menu_id', $request->id);
+        MenuInventories::destroy($menu_inventory->toArray());
+        Menu::destroy($request->id);
 
         return redirect()->action("MenuController@index");
     }

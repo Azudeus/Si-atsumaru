@@ -100,7 +100,7 @@
                                 <th></th>
                             </tr>
                             @foreach ($menus as $menu)
-                            <tr class="menus-card">
+                            <tr class="menus-card" id="menu{{$menu->id}}">
                                 <td>
                                     <img id="menu1" src="data:image/png;base64,{{ $menu->image }}" alt="Iced Tea" style="width: 100px; height: 100px;"class="img-thumbnail">
                                 </td>
@@ -117,7 +117,7 @@
                                             ])
                                         </div>
                                        <div class="col-md-4">
-                                            <i class="fa fa-trash-o" style="color:red" aria-hidden="true"></i>
+                                            <i class="fa fa-trash-o" style="color:red" aria-hidden="true" onclick="del({{$menu->id}})"></i>
                                         </div>
                                 </td>
                             </tr>
@@ -148,6 +148,21 @@
         }
     }
 
+    function del(id){
+          $.ajax({
+            method: 'POST', // Type of response and matches what we said in the route
+            url: '/menu/delete', // This is the url we gave in the route
+            data: {'id' : id, _token : '{{ csrf_token() }}'}, // a JSON object to send back
+            success: function(response){ // What to do if we succeed
+                location.load();
+            },
+            error: function(jqXHR, textStatus, errorThrown) { // What to do if we fail
+                $('#error').html(JSON.stringify(jqXHR['responseText']));
+                console.log(JSON.stringify(jqXHR['responseText']));
+                console.log("AJAX error: " + textStatus + ' : ' + errorThrown);
+            }
+        });
+    }
     function validate_madeof(e) {
         if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
             var search_term = e.target.value.toLowerCase()
