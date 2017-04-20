@@ -80,6 +80,19 @@ class CustomerController extends Controller
 
         return redirect()->action("CustomerController@index");
     }
+
+    public function delete(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|max:1000000'
+        ]);
+
+        $customer = Customer::Find($request->id);
+
+        $customer->delete();
+        
+        return redirect()->action("CustomerController@index");   
+    }
+
     /**
      * Show the acustomer detail
      *

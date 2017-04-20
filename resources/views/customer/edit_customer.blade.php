@@ -1,7 +1,6 @@
-<button type="button" class="btn btn-info btn-xs" data-toggle='modal' data-target="#myModal{{$id}}" 
-data-invenId="{{ $id }}" data-name="{{ $name }}" data-email="{{ $email }}" data-address="{{ $address }}">
-  Edit
-</button>
+<a href="#" data-toggle='modal' data-target="#myModal{{$id}}" data-invenId="{{ $id }}" data-name="{{ $name }}" data-email="{{ $email }}" data-address="{{ $address }}">
+  <i class="fa fa-pencil fa-lg" style="color:grey" aria-hidden="true"></i> 
+</a>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal{{$id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -40,7 +39,7 @@ data-invenId="{{ $id }}" data-name="{{ $name }}" data-email="{{ $email }}" data-
          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <input type="submit" class="btn btn-primary" value="Edit Inventory"/>
+            <input type="submit" class="btn btn-primary" value="Save Changes"/>
           </div>
       </form>
     </div>

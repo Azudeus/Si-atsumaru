@@ -25,6 +25,7 @@ Route::get('/customer', 'CustomerController@index')->name('customer');
 Route::get('/customer/{id}', 'CustomerController@detail')->where('id', '[0-9]+');
 Route::post('customer/add','CustomerController@addCustomer');
 Route::post('customer/edit','CustomerController@editCustomer');
+Route::post('customer/delete','CustomerController@delete')->name('delete_customer');
 
 // Inventories
 Route::get('/inventory', 'InventoryController@index')->name('inventory');
