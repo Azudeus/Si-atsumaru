@@ -31,6 +31,7 @@ Route::get('/inventory', 'InventoryController@index')->name('inventory');
 Route::get('/inventory/{id}', 'InventoryController@detail')->where('id', '[0-9]+');
 Route::post('inventory/add','InventoryController@addInventory');
 Route::post('inventory/edit','InventoryController@editInventory');
+Route::post('inventory/delete','InventoryController@delete')->name('delete_inventory');
 
 // Activities (Orders)
 Route::get('/order', 'OrderController@index')->name('order');

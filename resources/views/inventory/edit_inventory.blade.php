@@ -1,7 +1,6 @@
-<button type="button" class="btn btn-info btn-xs" data-toggle='modal' data-target="#myModal{{$id}}" 
-data-invenId="{{ $id }}" data-name="{{ $name }}" data-stock="{{ $stock }}" data-price="{{ $price }}">
-  Edit
-</button>
+<a href="#x" data-toggle='modal' data-target="#myModal{{$id}}" data-invenId="{{ $id }}" data-name="{{ $name }}" data-stock="{{ $stock }}" data-price="{{ $price }}">
+  <i class="fa fa-pencil fa-lg" style="color:grey" aria-hidden="true"></i> 
+</a>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal{{$id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

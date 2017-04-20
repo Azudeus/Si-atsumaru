@@ -77,6 +77,18 @@ class InventoryController extends Controller
         return redirect()->action("InventoryController@index");
     }
 
+    public function delete(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|max:1000000'
+        ]);
+
+        $inventory = Inventory::Find($request->id);
+
+        $inventory->delete();
+        
+        return redirect()->action("InventoryController@index");   
+    }
+
     /**
      * Show the inventory detail
      *

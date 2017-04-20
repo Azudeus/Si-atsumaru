@@ -87,7 +87,34 @@
                                             ])
                                         </div>
                                        <div class="col-md-4">
-                                            <i class="fa fa-trash-o" style="color:red" aria-hidden="true"></i>
+                                            <a href="#" data-toggle="modal" data-target="#myModalDelete">
+                                                <i class="fa fa-trash fa-lg" style="color:#e84646" aria-hidden="true"></i>
+                                            </a>
+                                            <!-- Modal -->
+                                            <div id="myModalDelete" class="modal fade" role="dialog">
+                                              <div class="modal-dialog">
+
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Delete this inventory?</h4>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                    <p>Are you sure you want to delete <strong>{{$inventory->name}}</strong>?</p>
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <form method="POST" action="{{ route('delete_inventory') }}">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+                                                        <input type="hidden" name="id" value="{{$inventory->id}}">
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </form>
+                                                  </div>
+                                                </div>
+
+                                              </div>
+                                            </div>
                                         </div>
                                     </td>
                                 </tr>
@@ -117,6 +144,16 @@
                 }
             });
         }
+    }
+
+    function deleteInventory(id) {
+        $.post("{{ route('delete_inventory') }}", 
+        {
+            id: id
+        },
+        function(data, status){
+            alert("Data: " + data + "\nStatus: " + status);
+        });
     }
 </script>
 
