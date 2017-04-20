@@ -19,6 +19,7 @@ Auth::routes();
 
 // Dashboard
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/getChartData', 'HomeController@getChartData')->name('getChartData');
 
 // Customers
 Route::get('/customer', 'CustomerController@index')->name('customer');

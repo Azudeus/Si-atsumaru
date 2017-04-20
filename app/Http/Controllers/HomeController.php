@@ -2,10 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use DateTime;
+
 use Illuminate\Http\Request;
 use App\Inventory;
 use App\Constant;
 use App\OrderMenu;
+use App\Order;
 
 class HomeController extends Controller
 {
@@ -33,5 +36,23 @@ class HomeController extends Controller
             'orders_menu'   => $orders_menu
         );
         return view('home')->with($data);
+    }
+
+    public function getChartData() {
+        $data = [];
+        $day = 6;
+        while ($day >= 0) {
+            $d = array();
+            $date = new DateTime($day.' days ago');
+            $d['date'] = $date->format("Y-m-d");
+            $d['cash inflow'] = Order::whereDate('created_at', $date->format("Y-m-d"))->sum('total_discount');
+
+            array_push($data, $d);
+
+            $day--;
+        }
+        // echo $date->format('Y-m-d');
+
+        return response()->json($data);
     }
 }

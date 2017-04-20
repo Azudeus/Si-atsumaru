@@ -8,11 +8,9 @@
                 <div class="panel-heading"><h3>Dashboard</h3></div>
 
                 <div class="panel-body">
-                    <div class="col-md-6">
-                        <a href="/img/chartExample.jpg" target=_blank><img src="/img/chartExample.jpg" class="resize"></a>
-                    </div>
-                    <div class="col-md-6">
-                        <a href="/img/PieChartExample.png" target=_blank><img src="/img/PieChartExample.png" class="resize"></a>
+                    <div class="col-md-12">
+                        <h3>Latest Cash Inflows</h3>
+                        <div id="myfirstchart" style="height: 250px;"></div>
                     </div>
                 </div>
                 <div class="panel-body">
@@ -43,7 +41,7 @@
                         </table>
                     </div>
                      <div class="row">
-                        <label class="col-md-4 control-label" name="inventory"><h3>Inventories</h3></label>
+                        <label class="col-md-4 control-label" name="inventory"><h3>Critical Inventories</h3></label>
                     </div>
                     <div class="col-md-12 data_table">
                         <table class="table table-condensed">
@@ -63,25 +61,25 @@
         </div>
     </div>
 </div>
-
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 <script type="text/javascript">
-    function validate(e) {
-        if (e.keyCode === 13) {  //checks whether the pressed key is "Enter"
-            var search_term = e.target.value.toLowerCase()
 
-            console.log('Searching: '+search_term)
-            $(".inventory-card").each(function(index) {
-                var inventory_name = $( this ).text().toLowerCase()
-                if(inventory_name.includes(search_term)) {
-                    $(this).show()
-                }
-                else {
-                    $(this).hide()   
-                }
-            });
-        }
-    }
+$.get('/getChartData', function(data, status) {
+    new Morris.Line({
+    // ID of the element in which to draw the chart.
+    element: 'myfirstchart',
+    // Chart data records -- each entry in this array corresponds to a point on
+    // the chart.
+    data: data,
+    // The name of the data record attribute that contains x-values.
+    xkey: 'date',
+    // A list of names of data record attributes that contain y-values.
+    ykeys: ['cash inflow'],
+    // Labels for the ykeys -- will be displayed when you hover over the
+    // chart.
+    labels: ['Cash Inflow']
+    });
+    console.log(data)
+})
 </script>
-
 @endsection
-
