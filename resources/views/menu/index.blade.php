@@ -117,7 +117,34 @@
                                             ])
                                         </div>
                                        <div class="col-md-4">
-                                            <i class="fa fa-trash-o" style="color:red" aria-hidden="true" onclick="del({{$menu->id}})"></i>
+                                            <a href="#" data-toggle="modal" data-target="#myModalDelete">
+                                                <i class="fa fa-trash fa-lg" style="color:#e84646" aria-hidden="true"></i>
+                                            </a>
+                                            <!-- Modal -->
+                                            <div id="myModalDelete" class="modal fade" role="dialog">
+                                              <div class="modal-dialog">
+
+                                                <!-- Modal content-->
+                                                <div class="modal-content">
+                                                  <div class="modal-header">
+                                                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                                                    <h4 class="modal-title">Delete this menu?</h4>
+                                                  </div>
+                                                  <div class="modal-body">
+                                                    <p>Are you sure you want to delete <strong>{{$menu->name}}</strong>?</p>
+                                                  </div>
+                                                  <div class="modal-footer">
+                                                    <form method="POST" action="{{ route('delete_menu') }}">
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                                        <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
+                                                        <input type="hidden" name="id" value="{{$menu->id}}">
+                                                        <button type="submit" class="btn btn-danger">Delete</button>
+                                                    </form>
+                                                  </div>
+                                                </div>
+
+                                              </div>
+                                            </div>
                                         </div>
                                 </td>
                             </tr>

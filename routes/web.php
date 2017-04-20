@@ -46,7 +46,8 @@ Route::get('/menu', 'MenuController@index')->name('menu');
 Route::get('/menu/{id}', 'MenuController@detail')->where('id', '[0-9]+');
 Route::post('menu/add','MenuController@addMenu');
 Route::post('menu/edit','MenuController@editMenu');
-Route::post('menu/delete','MenuController@deleteMenu');
+// Route::post('menu/delete','MenuController@deleteMenu');
+Route::post('menu/delete','MenuController@delete')->name('delete_menu');
 
 // Promotions
 Route::get('/promotion', 'PromotionController@index')->name('promotion');

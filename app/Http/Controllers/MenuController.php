@@ -88,12 +88,24 @@ class MenuController extends Controller
         return redirect()->action("MenuController@index");
     }
 
-    public function deleteMenu(Request $request){
-        $menu_inventory = MenuInventories::all()->where('menu_id', $request->id);
-        MenuInventories::destroy($menu_inventory->toArray());
-        Menu::destroy($request->id);
+    // public function deleteMenu(Request $request){
+    //     $menu_inventory = MenuInventories::all()->where('menu_id', $request->id);
+    //     MenuInventories::destroy($menu_inventory->toArray());
+    //     Menu::destroy($request->id);
 
-        return redirect()->action("MenuController@index");
+    //     return redirect()->action("MenuController@index");
+    // }
+
+    public function delete(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|max:1000000'
+        ]);
+
+        $menu = Menu::Find($request->id);
+
+        $menu->delete();
+        
+        return redirect()->action("MenuController@index");   
     }
 
     /**
