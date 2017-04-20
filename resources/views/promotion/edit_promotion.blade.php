@@ -1,7 +1,7 @@
-<button type="button" class="btn btn-info btn-xs" data-toggle='modal' data-target="#myModal{{$id}}" 
+<a href="#" data-toggle='modal' data-target="#myModal{{$id}}" 
 data-invenId="{{ $id }}" data-name="{{ $name }}" data-discount="{{ $discount }}" data-validuntil="{{ $valid_until }}">
-  Edit
-</button>
+  <i class="fa fa-pencil fa-lg" style="color:grey" aria-hidden="true"></i> 
+</a>
 
 <!-- Modal -->
 <div class="modal fade" id="myModal{{$id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -9,10 +9,10 @@ data-invenId="{{ $id }}" data-name="{{ $name }}" data-discount="{{ $discount }}"
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-        <h4 class="modal-title" id="myModalLabel">Edit Inventory</h4>
+        <h4 class="modal-title" id="myModalLabel">Edit Promotion</h4>
       </div>
 
-     <form class="form-horizontal" role="form" method="POST" action="{{action('InventoryController@editInventory')}}">
+     <form class="form-horizontal" role="form" method="POST" action="{{action('PromotionController@editPromotion')}}">
         <input name="_token" type="hidden" value="{{ csrf_token() }}"/>                            
         <input id="id" type="hidden" name="id" value="{{$id}}">
          <div class="modal-body">
@@ -40,7 +40,7 @@ data-invenId="{{ $id }}" data-name="{{ $name }}" data-discount="{{ $discount }}"
          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <input type="submit" class="btn btn-primary" value="Edit Inventory"/>
+            <input type="submit" class="btn btn-primary" value="Save Changes"/>
           </div>
       </form>
     </div>

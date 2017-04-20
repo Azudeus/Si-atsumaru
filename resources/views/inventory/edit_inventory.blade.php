@@ -39,7 +39,7 @@
          </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-            <input type="submit" class="btn btn-primary" value="Edit Inventory"/>
+            <input type="submit" class="btn btn-primary" value="Save Changes"/>
           </div>
       </form>
     </div>

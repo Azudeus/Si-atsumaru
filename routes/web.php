@@ -55,6 +55,8 @@ Route::get('/promotion', 'PromotionController@index')->name('promotion');
 Route::get('/promotion/{id}', 'PromotionController@detail')->where('id', '[0-9]+');
 Route::post('promotion/add','PromotionController@addPromotion');
 Route::post('promotion/edit','PromotionController@editPromotion');
+Route::post('promotion/delete','PromotionController@delete')->name('delete_promotion');
+
 // POS
 Route::get('/pos', 'POSController@index')->name('pos');
 Route::post('pos/add','POSController@addOrder')->name('addOrder');

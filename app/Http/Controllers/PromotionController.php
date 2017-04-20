@@ -76,6 +76,18 @@ class PromotionController extends Controller
         return redirect()->action("PromotionController@index");
     }
 
+    public function delete(Request $request) {
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|max:1000000'
+        ]);
+
+        $promotion = Promotion::Find($request->id);
+
+        $promotion->delete();
+        
+        return redirect()->action("PromotionController@index");   
+    }
+
     /**
      * Show the promotion detail
      *
