@@ -11,6 +11,8 @@ use App\Promotion;
 use App\MenuPromotions;
 use App\Order;
 use App\OrderMenu;
+use App\Inventory;
+use App\MenuInventories;
 
 class POSController extends Controller
 {
@@ -68,10 +70,24 @@ class POSController extends Controller
                         $order_menu->order_id = $order_id;
                         $data = explode(';', $request->input('menu'.$i));
                         print($request->input('menu'.$i));
+
                         $order_menu->menu_id = $data[0];
                         $order_menu->quantity = $data[1];
                         $order_menu->description = $data[3];
                         $order_menu->status = 0; //haven't been made
+
+                        // Decreasing inventories' stock
+                        $menu_inventories = MenuInventories::where('menu_id', $order_menu->menu_id)->get();
+                        foreach ($menu_inventories as $key => $value) {
+                            $inventory = Inventory::find($value->inventory_id);
+
+                            $amount = $order_menu->quantity * $value->inv_stock_needed;
+
+                            $old_stock = $inventory->stock;
+                            $inventory->stock = $old_stock - $amount;
+
+                            $inventory->save();
+                        }
 
                         $data_promotion = explode(',', $data[2]);
                         print(count($data_promotion));
