@@ -14,7 +14,7 @@
                              <h4>Add New Customer</h4>
                         </div>
                         <form class="form-horizontal" role="form" method="POST" action="{{action('CustomerController@addCustomer')}}">
-                            <input name="_token" type="hidden" value="{{ csrf_token() }}"/>                            
+                            <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
                             <div class=form-group>
                                 <label for="name" class="col-md-2">Name</label>
                                 <div class="col-md-10">
@@ -52,7 +52,7 @@
                             @endif
                             <input type=submit class="btn btn-primary" value="Add Customer"/>
                         </form>
-                    </div>  
+                    </div>
 
                     <div class="col-md-8">
                         <div class="page-header" style="margin-top: 20px;">
@@ -70,14 +70,14 @@
                             <table class="table table-condensed">
                                 <tr>
                                     <th>Name</th>
-                                    <th>Email</th> 
+                                    <th>Email</th>
                                     <th>Address</th>
                                     <th></th>
                                 </tr>
                                 @foreach ($customers as $customer)
                                 <tr class="customers-card">
                                     <td> {{$customer->name}}</td>
-                                    <td>{{$customer->email}}</td> 
+                                    <td>{{$customer->email}}</td>
                                     <td>{{$customer->address}}</td>
                                     <td>
                                         <div class="col-md-offset-4 col-md-4">
@@ -89,11 +89,11 @@
                                             ])
                                         </div>
                                        <div class="col-md-4">
-                                            <a href="#" data-toggle="modal" data-target="#myModalDelete">
+                                            <a href="#" data-toggle="modal" data-target="#myModalDelete-{{$customer->id}}">
                                                 <i class="fa fa-trash fa-lg" style="color:#e84646" aria-hidden="true"></i>
                                             </a>
                                             <!-- Modal -->
-                                            <div id="myModalDelete" class="modal fade" role="dialog">
+                                            <div id="myModalDelete-{{$customer->id}}" class="modal fade" role="dialog">
                                               <div class="modal-dialog">
 
                                                 <!-- Modal content-->
@@ -146,11 +146,10 @@
                     $(this).show()
                 }
                 else {
-                    $(this).hide()   
+                    $(this).hide()
                 }
             });
         }
     }
 </script>
 @endsection
-

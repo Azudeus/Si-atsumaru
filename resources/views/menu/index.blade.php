@@ -14,9 +14,9 @@
                         <div class="page-header" style="margin-top: 20px;">
                          <h4>Add New Menu</h4>
                         </div>
-                        
+
                         <form class="form-horizontal" role="form" method="POST" action="{{action('MenuController@addMenu')}}" onkeydown="validate_enter(event)" enctype="multipart/form-data">
-                            <input name="_token" type="hidden" value="{{ csrf_token() }}"/>                            
+                            <input name="_token" type="hidden" value="{{ csrf_token() }}"/>
                             <div class=form-group>
                                 <label for="name" class="col-md-2">Name</label>
                                 <div class="col-md-10">
@@ -59,7 +59,7 @@
                                           <span class="input-group-addon">{{ $inventori->name }}</span>
                                           <input type="number" class="form-control" aria-label="Text input with checkbox" id="madeof_{{ $inventori->id }}" name="madeof_{{ $inventori->id }}" disabled="" value="0">
                                         </div>
-                                                 
+
                                     </div>
                                     @endforeach
                                 </div>
@@ -77,9 +77,9 @@
                             </div>
                             <input type=submit class="btn btn-primary" value="Add New Menu" style="float:right;"/>
                         </form>
-                    </div>  
+                    </div>
 
-                
+
                     <div class="col-md-12 search_bar">
                      <div class="page-header" style="margin-top: 20px;">
                          <h4>List of Menu</h4>
@@ -95,7 +95,7 @@
                             <tr>
                                 <th>Image</th>
                                 <th>Name</th>
-                                <th>Price</th> 
+                                <th>Price</th>
                                 <th>Stock status</th>
                                 <th></th>
                             </tr>
@@ -105,7 +105,7 @@
                                     <img id="menu1" src="data:image/png;base64,{{ $menu->image }}" alt="Iced Tea" style="width: 100px; height: 100px;"class="img-thumbnail">
                                 </td>
                                 <td>{{$menu->name}}</td>
-                                <td>{{$menu->price}}</td> 
+                                <td>{{$menu->price}}</td>
                                 <td><span class="label label-success">in stock</span></td>
                                 <td>
                                     <div class="col-md-offset-4 col-md-4">
@@ -117,11 +117,11 @@
                                             ])
                                         </div>
                                        <div class="col-md-4">
-                                            <a href="#" data-toggle="modal" data-target="#myModalDelete">
+                                            <a href="#" data-toggle="modal" data-target="#myModalDelete-{{$menu->id}}">
                                                 <i class="fa fa-trash fa-lg" style="color:#e84646" aria-hidden="true"></i>
                                             </a>
                                             <!-- Modal -->
-                                            <div id="myModalDelete" class="modal fade" role="dialog">
+                                            <div id="myModalDelete-{{$menu->id}}" class="modal fade" role="dialog">
                                               <div class="modal-dialog">
 
                                                 <!-- Modal content-->
@@ -169,7 +169,7 @@
                     $(this).show()
                 }
                 else {
-                    $(this).hide()   
+                    $(this).hide()
                 }
             });
         }
@@ -201,7 +201,7 @@
                     $(this).show()
                 }
                 else {
-                    $(this).hide()   
+                    $(this).hide()
                 }
             });
         }

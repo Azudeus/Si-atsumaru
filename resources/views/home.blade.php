@@ -27,7 +27,7 @@
                             </tr>
                             @foreach ($orders_menu as $order_menu)
                             <tr class="customers-card">
-                                <td> {{$order_menu->menu->name}}</td>
+                                <td> {{$order_menu->menu_name}}</td>
                                 <td> {{$order_menu->quantity}}</td>
                                 <td> {{$order_menu->created_at}}</td>
                                 <td> @if ($order_menu->status === 1)
@@ -52,7 +52,7 @@
                             @foreach ($inventories as $inventory)
                             <tr class="customers-card">
                                 <td> {{$inventory->name}}</td>
-                                <td> <font color="red"> {{$inventory->stock}}  </font></td> 
+                                <td> <font color="red"> {{$inventory->stock}}  </font></td>
                             </tr>
                             @endforeach
                         </table>

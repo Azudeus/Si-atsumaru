@@ -35,8 +35,8 @@
                                     @foreach($orders_menu as $number => $order_menu)
                                         <tr id="{{$order_menu->id}}">
                                             <td>{{$number+1}}</td>
-                                            <td>{{$order_menu->order->customer->name}}</td>
-                                            <td>{{$order_menu->menu->name}}</td>
+                                            <td>{{$order_menu->customer_name}}</td>
+                                            <td>{{$order_menu->menu_name}}</td>
                                             <td>{{$order_menu->created_at}}</td>
                                             <td>{{$order_menu->quantity}}</td>
                                             <td>{{$order_menu->description}}</td>
@@ -68,7 +68,7 @@
                                     @foreach($orders as $number => $order)
                                         <tr>
                                             <td>{{$number+1}}</td>
-                                            <td>{{$order->customer->name}}</td>
+                                            <td>{{$order->customer_name}}</td>
                                             <td>{{$order->created_at}}</td>
                                             <td>{{$order->total_discount}}</td>
                                             <td>
@@ -101,7 +101,7 @@
                                     @foreach($orders_ongoing as $number => $order)
                                         <tr id="order{{$order->id}}">
                                             <td>{{$number+1}}</td>
-                                            <td>{{$order->customer->name}}</td>
+                                            <td>{{$order->customer_name}}</td>
                                             <td>{{$order->created_at}}</td>
                                             <td>{{$order->total_discount}}</td>
                                             <td>
@@ -132,7 +132,7 @@
                                     @foreach($orders_completed as $number => $order)
                                         <tr>
                                             <td>{{$number+1}}</td>
-                                            <td>{{$order->customer->name}}</td>
+                                            <td>{{$order->customer_name}}</td>
                                             <td>{{$order->created_at}}</td>
                                             <td>{{$order->total_discount}}</td>
                                         </tr>

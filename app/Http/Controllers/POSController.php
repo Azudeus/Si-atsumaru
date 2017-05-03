@@ -55,6 +55,8 @@ class POSController extends Controller
 
             $order->total_discount = $request->input('total_price_in_form');
             $order->customer_id = $customer_id;
+            $customer = Customer::where('id', $customer_id)->first();
+            $order->customer_name = $customer->name;
             $order->status = 0; // STATUS 0: new order
 
             $order->save();
@@ -72,6 +74,10 @@ class POSController extends Controller
                         print($request->input('menu'.$i));
 
                         $order_menu->menu_id = $data[0];
+                        $menu = Menu::where('id', $data[0])->first();
+                        $order_menu->menu_name = $menu->name;
+                        $order_menu->customer_name = $customer->name;
+                        $order_menu->menu_name = $menu->name;
                         $order_menu->quantity = $data[1];
                         $order_menu->description = $data[3];
                         $order_menu->status = 0; //haven't been made
@@ -102,7 +108,7 @@ class POSController extends Controller
                             }
                         }
 
-                        $order_menu->save();                    
+                        $order_menu->save();
                     }
                 }
             }
